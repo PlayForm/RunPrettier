@@ -1,9 +1,10 @@
-# @mixer/parallel-prettier
+# @playform/prettier
 
-A wrapper around [prettier]() that formats files in parallel to speed up large projects.
+A wrapper around [prettier]() that formats files in parallel to speed up large
+projects.
 
 ```
-npm install -g @mixer/parallel-prettier
+npm install -g @playform/prettier
 ```
 
 After installing the CLI, the `pprettier` command will be available to you.
