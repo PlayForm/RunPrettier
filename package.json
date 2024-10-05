@@ -25,7 +25,6 @@
 	"scripts": {
 		"build": "tsc",
 		"fmt": "tsc && node dist/index --write \"src/**/*.ts\" && npm run test:lint -- --fix",
-		"hello": "node --inspect=9229 hello.js",
 		"prepare": "tsc",
 		"test": "npm run test:lint && npm run test:fmt",
 		"test:fmt": "node dist/index \"src/**/*.ts\" --check",
