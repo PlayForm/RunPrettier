@@ -25,11 +25,11 @@
 	},
 	"scripts": {
 		"build": "tsc",
-		"fmt": "tsc && node Target/index --write \"src/**/*.ts\" && npm run test:lint -- --fix",
+		"fmt": "tsc && node Target/index --write \"Source/**/*.ts\" && npm run test:lint -- --fix",
 		"prepare": "tsc",
 		"test": "npm run test:lint && npm run test:fmt",
-		"test:fmt": "node Target/index \"src/**/*.ts\" --check",
-		"test:lint": "eslint \"src/**/*.ts\""
+		"test:fmt": "node Target/index \"Source/**/*.ts\" --check",
+		"test:lint": "eslint \"Source/**/*.ts\""
 	},
 	"dependencies": {
 		"chalk": "5.3.0",
