@@ -2,16 +2,16 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import { promises as fs } from "fs";
-import { relative } from "path";
+import { promises as fs } from "node:fs";
+import { relative } from "node:path";
 import globStream from "glob-stream";
-import ignore, { Ignore } from "ignore";
+import ignore, { type Ignore } from "ignore";
 import { Observable } from "rxjs";
 import { bufferCount, mergeMap } from "rxjs/operators";
 
-import { ProgressReporter } from "./progress-reporter";
-import { IOptions } from "./protocol";
-import { WorkerPool } from "./worker-pool";
+import { ProgressReporter } from "./progress-reporter.js";
+import type { IOptions } from "./protocol.js";
+import { WorkerPool } from "./worker-pool.js";
 
 const bufferSize = 50;
 
@@ -25,7 +25,7 @@ function runGlobs(files: string[], ignore: Ignore) {
 			}
 		});
 
-		stream.addListener("error", (err) => subscriber.error(err));
+		stream.addListener("error", (_Error) => subscriber.error(_Error));
 
 		stream.addListener("end", () => subscriber.complete());
 
@@ -48,12 +48,14 @@ export async function spawnWorkers(options: IOptions) {
 	runGlobs(options.files, await getIgnore(options.ignorePath))
 		.pipe(
 			bufferCount(bufferSize),
+
+			// @ts-expect-error
 			mergeMap((files) => pool.format(files), pool.maxSize * 2),
 		)
 		.subscribe(
-			(result) => progress.update(result),
-			(err) => {
-				throw err;
+			(Result) => progress.update(Result),
+			(_Error) => {
+				throw _Error;
 			},
 			() => {
 				progress.complete();

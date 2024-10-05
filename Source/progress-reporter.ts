@@ -2,18 +2,21 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import { relative } from "path";
+import { relative } from "node:path";
 import ora, { type Ora } from "ora";
 
-import { IFormatResults } from "./protocol";
+import { type IFormatResults } from "./protocol.js";
 
 /**
  * Handles reporting progress of the formatting to the console.
  */
 export class ProgressReporter {
 	public total = 0;
+
 	public reformatted = 0;
+
 	public failed = 0;
+
 	private spinner?: Ora;
 
 	constructor(
@@ -30,10 +33,12 @@ export class ProgressReporter {
 	 */
 	public update(results: IFormatResults) {
 		this.total += results.files;
+
 		this.reformatted += results.formatted.length;
+
 		this.failed += results.failed.length;
 
-		if (results.formatted.length) {
+		if (results.formatted.length > 0) {
 			if (this.spinner) {
 				this.spinner.stop();
 			}
@@ -44,6 +49,7 @@ export class ProgressReporter {
 
 			if (this.spinner) {
 				this.spinner.text = this.getMessage();
+
 				this.spinner.start();
 			}
 		} else if (this.spinner) {

@@ -3,15 +3,12 @@
 /*---------------------------------------------------------
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
-import cluster from "cluster";
-import { cpus } from "os";
-import * as commander from "commander";
+import cluster from "node:cluster";
+import { cpus } from "node:os";
 import * as prettier from "prettier";
 
-const { version } = require("../package.json");
-
-function startMaster() {
-	const Program = new commander.Command()
+const startMaster = async () => {
+	const Program = new (await import("commander")).Command()
 		.name("Prettier")
 		.option(
 			"--check, --list-different",
@@ -30,24 +27,24 @@ function startMaster() {
 			".prettierignore",
 		)
 		.version(
-			`@playform/prettier version ${version} / prettier version ${prettier.version}`,
+			`@playform/prettier version ${process.env["VERSION_PACKAGE"] ?? "0.0.1"} / prettier version ${prettier.version}`,
 		)
 		.parse(process.argv);
 
 	const opts = Program.opts();
 
-	require("./master").spawnWorkers({
-		check: opts.listDifferent,
-		concurrency: opts.concurrency,
+	(await import("./master.js")).spawnWorkers({
+		check: opts["listDifferent"],
+		concurrency: opts["concurrency"],
 		files: Program.args,
-		quiet: opts.quiet,
-		write: opts.write,
-		ignorePath: opts.ignorePath,
+		quiet: opts["quiet"],
+		write: opts["write"],
+		ignorePath: opts["ignorePath"],
 	});
-}
+};
 
-if (module === require.main && cluster.isPrimary) {
-	startMaster();
+if (cluster.isPrimary) {
+	await startMaster();
 } else if (cluster.isWorker) {
-	require("./worker").startWorker();
+	(await import("./worker.js")).startWorker();
 }

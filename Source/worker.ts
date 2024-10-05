@@ -2,21 +2,21 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import { promises as fs } from "fs";
+import { promises as fs } from "node:fs";
 import { inspect } from "util";
 import * as prettier from "prettier";
 import { combineLatest, Observable, of, Subject } from "rxjs";
 import { last, mergeMap } from "rxjs/operators";
 
 import {
-	IFilesMessage,
-	IFormattedMessage,
-	IInitializationMessage,
-	MasterMessage,
 	MessageType,
-	WorkerMessage,
 	WorkerMode,
-} from "./protocol";
+	type IFilesMessage,
+	type IFormattedMessage,
+	type IInitializationMessage,
+	type MasterMessage,
+	type WorkerMessage,
+} from "./protocol.js";
 
 /**
  * Reads the files from the observable stream and, with the specified
@@ -38,15 +38,19 @@ function runFormatting(
 	return of(...files.files).pipe(
 		mergeMap(async (file) => {
 			const contents = await fs.readFile(file.path, "utf-8");
+
 			let formatted: string;
+
 			try {
 				formatted = await prettier.format(contents, {
 					...(await prettier.resolveConfig(file.path)),
 					filepath: file.path,
 				});
 			} catch (e) {
-				process.stderr.write("\r\n" + inspect(e) + "\r\n");
+				process.stderr.write(`\r\n${inspect(e)}\r\n`);
+
 				output.failed.push(file);
+
 				return output;
 			}
 
@@ -61,6 +65,7 @@ function runFormatting(
 			}
 
 			output.formatted.push(file);
+
 			return output;
 		}),
 		last(),
@@ -69,15 +74,19 @@ function runFormatting(
 
 export function startWorker(): void {
 	const settings = new Subject<IInitializationMessage>();
+
 	const files = new Subject<IFilesMessage>();
 
 	process.on("message", (data: MasterMessage) => {
 		switch (data.type) {
 			case MessageType.WorkerInitialization:
 				settings.next(data);
+
 				break;
+
 			case MessageType.WorkerFiles:
 				files.next(data);
+
 				break;
 		}
 	});
@@ -86,9 +95,9 @@ export function startWorker(): void {
 		.pipe(mergeMap(([s, f]) => runFormatting(s, f)))
 		.subscribe(
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			(message) => process.send!(message),
-			(err) => {
-				throw err;
+			(Message) => process.send?.(Message),
+			(_Error) => {
+				throw _Error;
 			},
 		);
 }

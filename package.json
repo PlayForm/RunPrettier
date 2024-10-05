@@ -21,8 +21,9 @@
 	"author": "Connor Peet <connor@peet.io>",
 	"type": "module",
 	"main": "./Target/index.js",
+	"types": "./Target/index.d.ts",
 	"bin": {
-		"pprettier": "./Target/index.js"
+		"PPrettier": "Target/index.js"
 	},
 	"scripts": {
 		"prepublishOnly": "Build 'Source/**/*.ts'"
@@ -35,7 +36,7 @@
 		"ora": "8.1.0",
 		"prettier": "3.3.3",
 		"rxjs": "7.8.1",
-		"util": "0.0.1"
+		"util": "0.12.5"
 	},
 	"devDependencies": {
 		"@playform/build": "0.1.7",
