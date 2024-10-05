@@ -4,7 +4,7 @@
 
 import { promises as fs } from "fs";
 import { relative } from "path";
-import * as globStream from "glob-stream";
+import globStream from "glob-stream";
 import ignore, { Ignore } from "ignore";
 import { Observable } from "rxjs";
 import { bufferCount, mergeMap } from "rxjs/operators";

@@ -5,17 +5,17 @@
 /**
  * MessageType delimits the kind of message sent in the formatter IPC.
  */
-export const enum MessageType {
-	WorkerInitialization,
-	WorkerFiles,
-	Formatted,
-	Complete,
+export enum MessageType {
+	WorkerInitialization = 0,
+	WorkerFiles = 1,
+	Formatted = 2,
+	Complete = 3,
 }
 
-export const enum WorkerMode {
-	Write,
-	Print,
-	Assert,
+export enum WorkerMode {
+	Write = 0,
+	Print = 1,
+	Assert = 2,
 }
 
 /**
