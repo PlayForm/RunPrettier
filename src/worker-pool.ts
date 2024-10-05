@@ -2,7 +2,7 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import * as cluster from "cluster";
+import cluster, { type Worker } from "cluster";
 import { BehaviorSubject, fromEvent, Observable } from "rxjs";
 import { filter, map, switchMap, take, tap } from "rxjs/operators";
 
@@ -26,7 +26,7 @@ export class WorkerExitedError extends Error {
  */
 export class WorkerPool {
 	private readonly workers: Array<{
-		worker: Observable<cluster.Worker>;
+		worker: Observable<Worker>;
 		active: number;
 	}> = [];
 	private workIdCounter = 0;

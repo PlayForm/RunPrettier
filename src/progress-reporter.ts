@@ -3,7 +3,7 @@
  *--------------------------------------------------------*/
 
 import { relative } from "path";
-import * as ora from "ora";
+import ora, { type Ora } from "ora";
 
 import { IFormatResults } from "./protocol";
 
@@ -14,7 +14,7 @@ export class ProgressReporter {
 	public total = 0;
 	public reformatted = 0;
 	public failed = 0;
-	private spinner?: ora.Ora;
+	private spinner?: Ora;
 
 	constructor(
 		quiet: boolean,

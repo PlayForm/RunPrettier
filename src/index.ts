@@ -3,7 +3,7 @@
 /*---------------------------------------------------------
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
-import * as cluster from "cluster";
+import cluster from "cluster";
 import { cpus } from "os";
 import * as commander from "commander";
 import * as prettier from "prettier";
@@ -11,7 +11,8 @@ import * as prettier from "prettier";
 const { version } = require("../package.json");
 
 function startMaster() {
-	const program = commander
+	const Program = new commander.Command()
+		.name("Prettier")
 		.option(
 			"--check, --list-different",
 			"Whether to list unformatted files, instead of writing them out",
@@ -33,19 +34,19 @@ function startMaster() {
 		)
 		.parse(process.argv);
 
-	const opts = program.opts();
+	const opts = Program.opts();
 
 	require("./master").spawnWorkers({
 		check: opts.listDifferent,
 		concurrency: opts.concurrency,
-		files: program.args,
+		files: Program.args,
 		quiet: opts.quiet,
 		write: opts.write,
 		ignorePath: opts.ignorePath,
 	});
 }
 
-if (module === require.main && cluster.isMaster) {
+if (module === require.main && cluster.isPrimary) {
 	startMaster();
 } else if (cluster.isWorker) {
 	require("./worker").startWorker();
