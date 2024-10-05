@@ -1,20 +1,21 @@
 {
 	"name": "@playform/prettier",
-	"version": "2.0.3",
+	"version": "0.0.1",
 	"description": "Concurrent prettier runner",
 	"keywords": [
 		"prettier",
 		"parallel",
 		"concurrent",
-		"mixer"
+		"mixer",
+		"playform"
 	],
-	"homepage": "https://github.com/mixer/parallel-prettier#readme",
+	"homepage": "https://github.com/PlayForm/RunPrettier#readme",
 	"bugs": {
-		"url": "https://github.com/mixer/parallel-prettier/issues"
+		"url": "https://github.com/PlayForm/RunPrettier/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/mixer/parallel-prettier.git"
+		"url": "git+https://github.com/PlayForm/RunPrettier.git"
 	},
 	"license": "MIT",
 	"author": "Connor Peet <connor@peet.io>",

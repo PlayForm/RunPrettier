@@ -8,11 +8,10 @@
 		"strict": true,
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
-		"newLine": "LF",
 		"module": "ESNext",
 		"target": "ESNext",
 		"outDir": "Target",
 		"types": ["node"]
 	},
-	"include": ["src"]
+	"include": ["Source"]
 }
