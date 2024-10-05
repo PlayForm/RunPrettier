@@ -9,10 +9,9 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"newLine": "LF",
-		"module": "commonjs",
-		"target": "es6",
-		"lib": ["es6", "es7"],
-		"outDir": "dist",
+		"module": "ESNext",
+		"target": "ESNext",
+		"outDir": "Target",
 		"types": ["node"]
 	},
 	"include": ["src"]

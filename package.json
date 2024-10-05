@@ -18,16 +18,16 @@
 	},
 	"license": "MIT",
 	"author": "Connor Peet <connor@peet.io>",
-	"main": "./dist/index.js",
+	"main": "./Target/index.js",
 	"bin": {
-		"pprettier": "./dist/index.js"
+		"pprettier": "./Target/index.js"
 	},
 	"scripts": {
 		"build": "tsc",
-		"fmt": "tsc && node dist/index --write \"src/**/*.ts\" && npm run test:lint -- --fix",
+		"fmt": "tsc && node Target/index --write \"src/**/*.ts\" && npm run test:lint -- --fix",
 		"prepare": "tsc",
 		"test": "npm run test:lint && npm run test:fmt",
-		"test:fmt": "node dist/index \"src/**/*.ts\" --check",
+		"test:fmt": "node Target/index \"src/**/*.ts\" --check",
 		"test:lint": "eslint \"src/**/*.ts\""
 	},
 	"dependencies": {
