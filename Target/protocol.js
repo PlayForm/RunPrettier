@@ -1,0 +1,1 @@
+var i=(e=>(e[e.WorkerInitialization=0]="WorkerInitialization",e[e.WorkerFiles=1]="WorkerFiles",e[e.Formatted=2]="Formatted",e[e.Complete=3]="Complete",e))(i||{}),r=(t=>(t[t.Write=0]="Write",t[t.Print=1]="Print",t[t.Assert=2]="Assert",t))(r||{});export{i as MessageType,r as WorkerMode};
