@@ -1,6 +1,6 @@
 # @playform/prettier
 
-A wrapper around [prettier](https://npmjs.org/prettier) that formats files in
+A wrapper around [`prettier`](https://npmjs.org/prettier) that formats files in
 parallel to speed up large projects.
 
 ```
