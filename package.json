@@ -33,7 +33,7 @@
 		"commander": "12.1.0",
 		"glob-stream": "8.0.2",
 		"ignore": "6.0.2",
-		"ora": "8.1.0",
+		"ora": "8.1.1",
 		"prettier": "3.3.3",
 		"rxjs": "7.8.1",
 		"util": "0.12.5"
@@ -41,7 +41,7 @@
 	"devDependencies": {
 		"@playform/build": "0.1.8",
 		"@types/glob-stream": "8.0.2",
-		"@types/node": "22.8.6",
+		"@types/node": "22.9.0",
 		"@types/prettier": "3.0.0"
 	}
 }
