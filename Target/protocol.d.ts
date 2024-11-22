@@ -2,31 +2,31 @@
  * MessageType delimits the kind of message sent in the formatter IPC.
  */
 export declare enum MessageType {
-    WorkerInitialization = 0,
-    WorkerFiles = 1,
-    Formatted = 2,
-    Complete = 3
+	WorkerInitialization = 0,
+	WorkerFiles = 1,
+	Formatted = 2,
+	Complete = 3,
 }
 export declare enum WorkerMode {
-    Write = 0,
-    Print = 1,
-    Assert = 2
+	Write = 0,
+	Print = 1,
+	Assert = 2,
 }
 /**
  * An InitializationMessage is sent from
  * the master to queue work on its workers.
  */
 export interface IInitializationMessage {
-    type: MessageType.WorkerInitialization;
-    mode: WorkerMode.Write;
+	type: MessageType.WorkerInitialization;
+	mode: WorkerMode.Write;
 }
 /**
  * IFiles is sent to queue files to format on the worker.
  */
 export interface IFilesMessage {
-    type: MessageType.WorkerFiles;
-    files: IDiscoveredFile[];
-    id: number;
+	type: MessageType.WorkerFiles;
+	files: IDiscoveredFile[];
+	id: number;
 }
 /**
  * MasterMessage is sent from the cluster master to its workers.
@@ -36,24 +36,24 @@ export type MasterMessage = IInitializationMessage | IFilesMessage;
  * Results returned from formatting files.
  */
 export interface IFormatResults {
-    files: number;
-    failed: IDiscoveredFile[];
-    formatted: IDiscoveredFile[];
+	files: number;
+	failed: IDiscoveredFile[];
+	formatted: IDiscoveredFile[];
 }
 /**
  * Format message received from a worker.
  */
 export interface IFormattedMessage extends IFormatResults {
-    type: MessageType.Formatted;
-    id: number;
+	type: MessageType.Formatted;
+	id: number;
 }
 /**
  * Discovered file item.
  */
 export interface IDiscoveredFile {
-    cwd: string;
-    base: string;
-    path: string;
+	cwd: string;
+	base: string;
+	path: string;
 }
 /**
  * Mesage is sent from the worker to the parent process.
@@ -63,10 +63,10 @@ export type WorkerMessage = IFormattedMessage;
  * Top-level options for the formatter.
  */
 export interface IOptions {
-    check: boolean;
-    write: boolean;
-    concurrency: number;
-    quiet: boolean;
-    files: string[];
-    ignorePath: string;
+	check: boolean;
+	write: boolean;
+	concurrency: number;
+	quiet: boolean;
+	files: string[];
+	ignorePath: string;
 }
