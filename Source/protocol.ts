@@ -47,6 +47,7 @@ export type MasterMessage = IInitializationMessage | IFilesMessage;
 export interface IFormatResults {
 	files: number;
 	failed: IDiscoveredFile[];
+
 	formatted: IDiscoveredFile[];
 }
 

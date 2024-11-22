@@ -43,6 +43,7 @@ async function getIgnore(ignorePath: string) {
 
 export async function spawnWorkers(options: IOptions) {
 	const pool = new WorkerPool(options);
+
 	const progress = new ProgressReporter(options.quiet, options.check);
 
 	runGlobs(options.files, await getIgnore(options.ignorePath))
