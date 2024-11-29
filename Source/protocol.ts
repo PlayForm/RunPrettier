@@ -24,6 +24,7 @@ export enum WorkerMode {
  */
 export interface IInitializationMessage {
 	type: MessageType.WorkerInitialization;
+
 	mode: WorkerMode.Write;
 }
 
@@ -32,7 +33,9 @@ export interface IInitializationMessage {
  */
 export interface IFilesMessage {
 	type: MessageType.WorkerFiles;
+
 	files: IDiscoveredFile[];
+
 	id: number;
 }
 
@@ -46,6 +49,7 @@ export type MasterMessage = IInitializationMessage | IFilesMessage;
  */
 export interface IFormatResults {
 	files: number;
+
 	failed: IDiscoveredFile[];
 
 	formatted: IDiscoveredFile[];
@@ -56,6 +60,7 @@ export interface IFormatResults {
  */
 export interface IFormattedMessage extends IFormatResults {
 	type: MessageType.Formatted;
+
 	id: number;
 }
 
@@ -64,7 +69,9 @@ export interface IFormattedMessage extends IFormatResults {
  */
 export interface IDiscoveredFile {
 	cwd: string;
+
 	base: string;
+
 	path: string;
 }
 
@@ -78,9 +85,14 @@ export type WorkerMessage = IFormattedMessage;
  */
 export interface IOptions {
 	check: boolean;
+
 	write: boolean;
+
 	concurrency: number;
+
 	quiet: boolean;
+
 	files: string[];
+
 	ignorePath: string;
 }
