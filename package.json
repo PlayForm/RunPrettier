@@ -30,7 +30,7 @@
 	},
 	"dependencies": {
 		"chalk": "5.4.1",
-		"commander": "13.0.0",
+		"commander": "13.1.0",
 		"glob-stream": "8.0.2",
 		"ignore": "7.0.3",
 		"ora": "8.1.1",
@@ -41,7 +41,7 @@
 	"devDependencies": {
 		"@playform/build": "0.2.1",
 		"@types/glob-stream": "8.0.2",
-		"@types/node": "22.10.7",
+		"@types/node": "22.10.9",
 		"@types/prettier": "3.0.0"
 	}
 }
