@@ -41,7 +41,7 @@
 	"devDependencies": {
 		"@playform/build": "0.2.4",
 		"@types/glob-stream": "8.0.3",
-		"@types/node": "22.15.15",
+		"@types/node": "22.15.18",
 		"@types/prettier": "3.0.0"
 	}
 }
