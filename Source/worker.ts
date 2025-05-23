@@ -5,17 +5,17 @@
 import { promises as fs } from "node:fs";
 import { inspect } from "util";
 import * as prettier from "prettier";
-import { combineLatest, Observable, of, Subject } from "rxjs";
+import { type Observable, Subject, combineLatest, of } from "rxjs";
 import { last, mergeMap } from "rxjs/operators";
 
 import {
-	MessageType,
-	WorkerMode,
 	type IFilesMessage,
 	type IFormattedMessage,
 	type IInitializationMessage,
 	type MasterMessage,
+	MessageType,
 	type WorkerMessage,
+	WorkerMode,
 } from "./protocol.js";
 
 /**

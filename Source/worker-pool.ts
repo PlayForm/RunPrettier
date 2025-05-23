@@ -3,16 +3,16 @@
  *--------------------------------------------------------*/
 
 import cluster, { type Worker } from "node:cluster";
-import { BehaviorSubject, fromEvent, Observable } from "rxjs";
+import { BehaviorSubject, type Observable, fromEvent } from "rxjs";
 import { filter, map, switchMap, take, tap } from "rxjs/operators";
 
 import {
-	MessageType,
-	WorkerMode,
 	type IFormatResults,
 	type IInitializationMessage,
 	type IOptions,
+	MessageType,
 	type WorkerMessage,
+	WorkerMode,
 } from "./protocol.js";
 
 export class WorkerExitedError extends Error {

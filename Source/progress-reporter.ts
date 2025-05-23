@@ -5,7 +5,7 @@
 import { relative } from "node:path";
 import ora, { type Ora } from "ora";
 
-import { type IFormatResults } from "./protocol.js";
+import type { IFormatResults } from "./protocol.js";
 
 /**
  * Handles reporting progress of the formatting to the console.
