@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { type Observable } from "rxjs";
 import { type IFormatResults, type IOptions } from "./protocol.js";
 export declare class WorkerExitedError extends Error {
     constructor(codeOrSignal: number | string);
