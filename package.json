@@ -34,14 +34,14 @@
 		"glob-stream": "8.0.3",
 		"ignore": "7.0.5",
 		"ora": "8.2.0",
-		"prettier": "3.5.3",
+		"prettier": "3.6.0",
 		"rxjs": "7.8.2",
 		"util": "0.12.5"
 	},
 	"devDependencies": {
 		"@playform/build": "0.2.4",
 		"@types/glob-stream": "8.0.3",
-		"@types/node": "22.15.30",
+		"@types/node": "24.0.3",
 		"@types/prettier": "3.0.0"
 	}
 }
